@@ -1,1 +1,15 @@
-<p>todo-list works!</p>
+<section [ngClass]="{'loading':!taskList}">
+  <ul *ngIf="taskList">
+    <li *ngFor="let item of taskList; let i = index">
+      <input type="checkbox" [(ngModel)]="item.checked">
+      <input type="text"[(ngModel)]="item.task">
+      <button (click)="deleteItemTaskList(i)">
+        <img src="../../../../../assets/icon/icon-trash.svg" alt="ÍCONE LIXEIRA">
+      </button>
+    </li>
+  </ul>
+</section>
+<app-todo-input-add-itens ></app-todo-input-add-itens>
+<app-todo-button-delete-all *ngIf="taskList" (click)="deleteAllTask()"></app-todo-button-delete-all>
+
+
